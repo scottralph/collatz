@@ -34,7 +34,6 @@ class Digits(val digitSequence : Array[Byte]) {
       var carry = true
       val d = new Array[Byte](digitSequence.length)
       for (i <- digitSequence.length - 1 to 0 by -1) {
-        val z = digitSequence(i)
         if (digitSequence(i).equals(9.toByte) && carry) {
           d(i) = 0
         } else {
