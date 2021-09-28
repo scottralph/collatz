@@ -97,15 +97,15 @@ class Digits(val digitSequence : Array[Byte]) {
     while(!x.isUnity()) {
       val hashString = x.asHashString()
       if (seen(hashString)) {
-        println("*************** FOUND A CYCLE")
+        println("\n*************** FOUND A CYCLE")
         return -1
       }
       seen += hashString
 
       count +=1
       x = x.next()
-      if(debug)
-        println(s"At iteration $count the magnitude ${x.magnitude()}")
+      if(debug && (count % 10000 == 0))
+        print(s"[$count mag = ${x.magnitude()}]")
     }
     return count
   }
@@ -142,7 +142,7 @@ object Digits {
     val r = scala.util.Random
     var digit = r.nextInt(10)
     while(posn == 0 && digit == 0) {
-      digit = r.nextInt()
+      digit = r.nextInt(10)
     }
     digit.toByte
   }
